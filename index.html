@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>苍岭清舍 Cangling Qing She</title>
+    
+    <!-- Google Fonts: Noto Serif SC (中文衬线), Playfair Display (英文衬线), Inter (正文无衬线) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        offwhite: '#F7F5F0', // 暖米白
+                        charcoal: '#2C2C2C', // 炭黑
+                        pine: '#375043',     // 松绿
+                        earth: '#6B543A',    // 泥土棕
+                        mist: '#7A7A7A',     // 雾灰
+                        wood: '#D4B895',     // 自然木色
+                    },
+                    fontFamily: {
+                        serifcn: ['"Noto Serif SC"', 'serif'],
+                        serifen: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styling for specific elegant touches */
+        body {
+            background-color: #F7F5F0;
+            color: #2C2C2C;
+        }
+        .text-justify-custom {
+            text-align: justify;
+            text-justify: inter-ideograph;
+        }
+        .image-overlay {
+            background: linear-gradient(to bottom, rgba(44, 44, 44, 0.4), rgba(44, 44, 44, 0.7));
+        }
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Hide scrollbar for clean look in journal */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-pine selection:text-offwhite">
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent py-6 px-6 md:px-12 flex justify-between items-center text-offwhite border-b border-transparent">
+        <a href="#home" class="font-serifcn text-xl tracking-[0.2em] z-10 hover:opacity-80 transition-opacity">苍岭清舍</a>
+        
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex gap-8 font-sans text-sm tracking-widest font-light">
+            <a href="#home" class="hover:text-wood transition-colors">首页 Home</a>
+            <a href="#about" class="hover:text-wood transition-colors">关于 About</a>
+            <a href="#pathways" class="hover:text-wood transition-colors">七大板块 Pathways</a>
+            <a href="#journal" class="hover:text-wood transition-colors">山居日志 Journal</a>
+            <a href="#contact" class="hover:text-wood transition-colors">联系 Contact</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden z-10" onclick="toggleMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 bg-charcoal text-offwhite z-40 flex flex-col items-center justify-center gap-8 hidden opacity-0 transition-opacity duration-300">
+        <a href="#home" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">首页 Home</a>
+        <a href="#about" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">关于 About</a>
+        <a href="#pathways" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">七大板块 Pathways</a>
+        <a href="#journal" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">山居日志 Journal</a>
+        <a href="#contact" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">联系 Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?q=80&w=2500&auto=format&fit=crop" alt="Mountain View" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 image-overlay"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center text-offwhite px-4 max-w-4xl fade-in-up">
+            <h1 class="font-serifcn text-5xl md:text-7xl font-light tracking-[0.3em] mb-4 drop-shadow-lg">苍岭清舍</h1>
+            <h2 class="font-serifen text-2xl md:text-4xl italic text-wood mb-12 tracking-wide">Cangling Qing She</h2>
+            
+            <p class="font-serifcn text-base md:text-lg tracking-widest leading-loose mb-6 font-light">
+                以山为院，以茶为心，以武为骨<br class="hidden md:block">
+                在苍岭之上，安顿一种清明、丰盛而有力量的东方山居生活。
+            </p>
+            <p class="font-serifen text-sm md:text-base text-gray-300 italic mb-16 max-w-2xl mx-auto leading-relaxed">
+                An Eastern mountain dwelling where tea, movement, wilderness, cultivation, and stillness become a way of life.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#about" class="border border-offwhite text-offwhite px-8 py-3 text-sm tracking-[0.2em] hover:bg-offwhite hover:text-charcoal transition-all duration-500 w-48 text-center">步入山舍 Enter</a>
+                <a href="#contact" class="border border-wood text-wood px-8 py-3 text-sm tracking-[0.2em] hover:bg-wood hover:text-offwhite transition-all duration-500 w-48 text-center">联系合作 Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Motto Section -->
+    <section class="py-24 md:py-32 px-6 bg-offwhite">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="font-serifcn text-xl md:text-3xl text-charcoal leading-[2.2] tracking-widest mb-10">
+                苍岭清舍，以茶为心，以武为骨，以野为境，<br class="hidden md:block">以少年为未来，以食养身体，以耕读养根，以禅修养神。
+            </h3>
+            <p class="font-serifen text-mist text-base md:text-lg italic leading-relaxed max-w-3xl mx-auto">
+                Cangling Qing She is rooted in tea, strengthened by movement, opened by wilderness, nourished by food, grounded in cultivation, deepened through meditation, and carried forward by the next generation.
+            </p>
+        </div>
+    </section>
+
+    <!-- Meaning Section -->
+    <section class="py-20 px-6 md:px-12 lg:px-24 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-12 lg:gap-16">
+                
+                <!-- 苍 -->
+                <div class="group">
+                    <h4 class="font-serifcn text-4xl text-earth mb-2 border-b border-gray-200 pb-4 flex items-end justify-between">
+                        <span>苍</span> <span class="font-serifen text-2xl text-mist">Cang</span>
+                    </h4>
+                    <p class="font-sans text-sm text-charcoal leading-relaxed mt-6 mb-4 text-justify-custom">
+                        苍，是时间沉淀出的野性与厚度。<br>它代表古意、山色、风霜、生命力，也代表一种不随流行而改变的东方气场。
+                    </p>
+                    <p class="font-serifen text-sm text-mist italic leading-relaxed">
+                        Cang carries the feeling of ancient mountains, weathered trees, deep time, and quiet strength.
+                    </p>
+                </div>
+
+                <!-- 岭 -->
+                <div class="group">
+                    <h4 class="font-serifcn text-4xl text-earth mb-2 border-b border-gray-200 pb-4 flex items-end justify-between">
+                        <span>岭</span> <span class="font-serifen text-2xl text-mist">Ling</span>
+                    </h4>
+                    <p class="font-sans text-sm text-charcoal leading-relaxed mt-6 mb-4 text-justify-custom">
+                        岭，是山的脊梁，也是人在山中重新安顿身心的路径。<br>它连接城市与山野，东方与西方，外在生活与内在修行。
+                    </p>
+                    <p class="font-serifen text-sm text-mist italic leading-relaxed">
+                        Ling means mountain ridge. It is both a physical landscape and a symbolic path between city and wilderness, East and West.
+                    </p>
+                </div>
+
+                <!-- 清 -->
+                <div class="group">
+                    <h4 class="font-serifcn text-4xl text-earth mb-2 border-b border-gray-200 pb-4 flex items-end justify-between">
+                        <span>清</span> <span class="font-serifen text-2xl text-mist">Qing</span>
+                    </h4>
+                    <p class="font-sans text-sm text-charcoal leading-relaxed mt-6 mb-4 text-justify-custom">
+                        清，是把生活从杂乱中洗出来。<br>清明、清净、清雅、清醒，是苍岭清舍最核心的精神气质。
+                    </p>
+                    <p class="font-serifen text-sm text-mist italic leading-relaxed">
+                        Qing means clarity, purity, elegance, and awakened calm.
+                    </p>
+                </div>
+
+                <!-- 舍 -->
+                <div class="group">
+                    <h4 class="font-serifcn text-4xl text-earth mb-2 border-b border-gray-200 pb-4 flex items-end justify-between">
+                        <span>舍</span> <span class="font-serifen text-2xl text-mist">She</span>
+                    </h4>
+                    <p class="font-sans text-sm text-charcoal leading-relaxed mt-6 mb-4 text-justify-custom">
+                        舍，是房舍、山舍、茶舍、书舍，也是身心可以停靠之处。<br>它不是临时打卡的空间，而是一个可以生活、修习的山中之所。
+                    </p>
+                    <p class="font-serifen text-sm text-mist italic leading-relaxed">
+                        She means dwelling, retreat, study, or tea house. A place for living, learning, and returning to inner clarity.
+                    </p>
+                </div>
+
+            </div>
+            
+            <div class="mt-20 text-center border-t border-gray-200 pt-16">
+                <p class="font-serifcn text-2xl text-charcoal tracking-widest mb-4">苍岭，是山的脊梁；清舍，是人的安顿。</p>
+                <p class="font-serifen text-mist italic text-lg">Cangling is the ridge of the mountain. Qing She is a quiet dwelling for life, learning, and inner cultivation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-offwhite">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1616788812674-8848db9a8e03?q=80&w=1500&auto=format&fit=crop" alt="Quiet Room" class="w-full h-auto aspect-[4/5] object-cover rounded-sm shadow-xl">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="font-serifen text-mist tracking-[0.2em] uppercase text-sm mb-4">About Cangling Qing She</h2>
+                <h3 class="font-serifcn text-4xl text-charcoal mb-8 tracking-widest">关于苍岭清舍</h3>
+                
+                <div class="space-y-6 text-charcoal font-sans text-justify-custom leading-loose">
+                    <p>
+                        苍岭清舍，是一处生长在山岭之间的东方山居生活空间。
+                    </p>
+                    <p>
+                        它以山为院，以茶为心，以武为骨，以野为境，以食养身体，以耕读养根，以禅修养神，并以少年与荒野作为面向未来的成长方向。这里不是单纯的农场、茶室、户外营地或个人住宅，而是一座清雅、自然、安静而有生命力的东方山舍。
+                    </p>
+                    <p>
+                        它将中国传统文化中的茶、武、花、香、耕读、修身之道，重新放回现代山野生活之中。
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-300">
+                    <p class="font-serifen text-mist italic leading-relaxed">
+                        Cangling Qing She is a living space rooted in the mountains, bringing the ancient ways of tea, movement, farming, and meditation back into modern wilderness living. It is not a commercial farm, a simple campsite, or a private estate, but an elegant, quiet, and vital mountain sanctuary.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seven Pathways Section -->
+    <section id="pathways" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 text-center mb-20">
+            <h2 class="font-serifen text-mist tracking-[0.2em] uppercase text-sm mb-4">Seven Pathways</h2>
+            <h3 class="font-serifcn text-4xl md:text-5xl text-charcoal tracking-widest">苍岭清舍七大生活法门</h3>
+        </div>
+
+        <div class="flex flex-col">
+            
+            <!-- Pathway 1: Tea -->
+            <article class="flex flex-col md:flex-row group w-full max-w-7xl mx-auto">
+                <div class="md:w-1/2 h-[50vh] md:h-[70vh] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1576092762791-dd9e2220abd4?q=80&w=1500&auto=format&fit=crop" alt="Tea Living" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-offwhite">
+                    <span class="font-serifen text-wood tracking-[0.2em] text-sm mb-2">01 — Tea Living</span>
+                    <h4 class="font-serifcn text-4xl text-charcoal mb-6 tracking-widest">茶</h4>
+                    <p class="font-serifcn text-xl text-pine mb-8 tracking-widest">以茶入静，以茶待人，以茶安身。</p>
+                    <p class="font-sans text-charcoal leading-loose text-sm md:text-base mb-6 text-justify-custom">
+                        茶，是苍岭清舍的心。从山野茶席、松下煮茶，到东方待客之道，茶在这里不是技巧，而是一种让人慢下来的生活方式。
+                    </p>
+                    <p class="font-serifen text-mist italic text-sm md:text-base leading-relaxed">
+                        Tea is the heart of Cangling Qing She. From mountain tea gatherings to quiet tea rituals under the pine, tea becomes a way to welcome others and return to inner calm.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Pathway 2: Movement -->
+            <article class="flex flex-col md:flex-row-reverse group w-full max-w-7xl mx-auto">
+                <div class="md:w-1/2 h-[50vh] md:h-[70vh] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=1500&auto=format&fit=crop" alt="Martial Arts" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-white">
+                    <span class="font-serifen text-wood tracking-[0.2em] text-sm mb-2">02 — Martial Arts & Movement</span>
+                    <h4 class="font-serifcn text-4xl text-charcoal mb-6 tracking-widest">武</h4>
+                    <p class="font-serifcn text-xl text-pine mb-8 tracking-widest">武，不是为了争胜，而是让身体有根、内心有定。</p>
+                    <p class="font-sans text-charcoal leading-loose text-sm md:text-base mb-6 text-justify-custom">
+                        武，是苍岭清舍的骨。它包括中国武术、身体训练、山地体能、五树武动与文武双修的东方身体哲学。
+                    </p>
+                    <p class="font-serifen text-mist italic text-sm md:text-base leading-relaxed">
+                        Movement is the bone structure of Cangling Qing She. It is not about fighting to win, but about standing with strength, balance, discipline, and inner steadiness.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Pathway 3: Wilderness -->
+            <article class="flex flex-col md:flex-row group w-full max-w-7xl mx-auto">
+                <div class="md:w-1/2 h-[50vh] md:h-[70vh] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?q=80&w=1500&auto=format&fit=crop" alt="Wilderness Living" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-offwhite">
+                    <span class="font-serifen text-wood tracking-[0.2em] text-sm mb-2">03 — Wilderness Living</span>
+                    <h4 class="font-serifcn text-4xl text-charcoal mb-6 tracking-widest">野</h4>
+                    <p class="font-serifcn text-xl text-pine mb-8 tracking-widest">野，是文明人重新找回身体本能。</p>
+                    <p class="font-sans text-charcoal leading-loose text-sm md:text-base mb-6 text-justify-custom">
+                        野，是苍岭清舍的气。它包括户外生活、野炊、绳结、营地搭建、自然观察与山地行走。这里的野，不是粗糙，而是有美学地回到真实。
+                    </p>
+                    <p class="font-serifen text-mist italic text-sm md:text-base leading-relaxed">
+                        Wilderness is the breath of Cangling Qing She. Outdoor cooking, knots, shelters, mountain walking, and nature observation become part of a refined yet grounded way of life.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Pathway 4: Youth -->
+            <article class="flex flex-col md:flex-row-reverse group w-full max-w-7xl mx-auto">
+                <div class="md:w-1/2 h-[50vh] md:h-[70vh] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=1500&auto=format&fit=crop" alt="Youth and the Wild" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-white">
+                    <span class="font-serifen text-wood tracking-[0.2em] text-sm mb-2">04 — Youth & the Wild</span>
+                    <h4 class="font-serifcn text-4xl text-charcoal mb-6 tracking-widest">少年与荒野</h4>
+                    <p class="font-serifcn text-xl text-pine mb-8 tracking-widest">让少年在荒野中学习勇气、责任、观察力与生命敬畏。</p>
+                    <p class="font-sans text-charcoal leading-loose text-sm md:text-base mb-6 text-justify-custom">
+                        这是苍岭清舍的未来。它面向青少年自然教育、野生动物保护、户外技能、公益行动、影像表达与长期成长项目。
+                    </p>
+                    <p class="font-serifen text-mist italic text-sm md:text-base leading-relaxed">
+                        Youth and the Wild is the future. It helps young people build courage, responsibility, observation skills, and respect for life through wilderness education.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Pathway 5: Nourishing -->
+            <article class="flex flex-col md:flex-row group w-full max-w-7xl mx-auto">
+                <div class="md:w-1/2 h-[50vh] md:h-[70vh] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1490818387583-1b5f2082f704?q=80&w=1500&auto=format&fit=crop" alt="Nourishing Living" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-offwhite">
+                    <span class="font-serifen text-wood tracking-[0.2em] text-sm mb-2">05 — Nourishing Living</span>
+                    <h4 class="font-serifcn text-4xl text-charcoal mb-6 tracking-widest">食养</h4>
+                    <p class="font-serifcn text-xl text-pine mb-8 tracking-widest">食，不只是吃饱；养，是让身体慢慢恢复秩序。</p>
+                    <p class="font-sans text-charcoal leading-loose text-sm md:text-base mb-6 text-justify-custom">
+                        食养，是苍岭清舍的养。它包括山居饮食、四季食养、茶食、草本饮、野外烹饪与东方养生智慧。
+                    </p>
+                    <p class="font-serifen text-mist italic text-sm md:text-base leading-relaxed">
+                        Food is not only for fullness. Nourishment is the restoration of balance. This pathway explores seasonal food, herbal drinks, tea snacks, and outdoor cooking.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Pathway 6: Farming -->
+            <article class="flex flex-col md:flex-row-reverse group w-full max-w-7xl mx-auto">
+                <div class="md:w-1/2 h-[50vh] md:h-[70vh] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1592424001801-9d93616238b1?q=80&w=1500&auto=format&fit=crop" alt="Farming & Learning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-white">
+                    <span class="font-serifen text-wood tracking-[0.2em] text-sm mb-2">06 — Farming & Learning</span>
+                    <h4 class="font-serifcn text-4xl text-charcoal mb-6 tracking-widest">耕读</h4>
+                    <p class="font-serifcn text-xl text-pine mb-8 tracking-widest">一手入土，一手读书；一边种菜，一边养心。</p>
+                    <p class="font-sans text-charcoal leading-loose text-sm md:text-base mb-6 text-justify-custom">
+                        耕读，是苍岭清舍的根。它包括山顶菜园、九宫格种植、果树管理、鸡舍鸽舍、堆肥、自然笔记、亲子劳动与读写观察。
+                    </p>
+                    <p class="font-serifen text-mist italic text-sm md:text-base leading-relaxed">
+                        Farming and learning are the roots. Hands touch the soil. The mind returns to study. Planting, observing, writing, and working with the land become quiet cultivation.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Pathway 7: Meditation -->
+            <article class="flex flex-col md:flex-row group w-full max-w-7xl mx-auto">
+                <div class="md:w-1/2 h-[50vh] md:h-[70vh] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1500&auto=format&fit=crop" alt="Meditation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-offwhite">
+                    <span class="font-serifen text-wood tracking-[0.2em] text-sm mb-2">07 — Meditation</span>
+                    <h4 class="font-serifcn text-4xl text-charcoal mb-6 tracking-widest">禅修</h4>
+                    <p class="font-serifcn text-xl text-pine mb-8 tracking-widest">在山中，把身心从复杂中带回清明。</p>
+                    <p class="font-sans text-charcoal leading-loose text-sm md:text-base mb-6 text-justify-custom">
+                        禅修，是苍岭清舍的魂。它包括静坐、呼吸、茶禅、行禅、抄经、心经、香、花、茶、武结合的身心修习。
+                    </p>
+                    <p class="font-serifen text-mist italic text-sm md:text-base leading-relaxed">
+                        Meditation is the soul. Through breath, stillness, tea, incense, flowers, movement, and contemplative practice, the mind returns to clarity.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Journal Section -->
+    <section id="journal" class="py-32 bg-charcoal text-offwhite">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h2 class="font-serifen text-wood tracking-[0.2em] uppercase text-sm mb-4">Journal</h2>
+                    <h3 class="font-serifcn text-4xl tracking-widest">山居日志</h3>
+                </div>
+                <a href="#" class="mt-6 md:mt-0 text-sm font-sans tracking-widest border-b border-wood text-wood pb-1 hover:text-offwhite hover:border-offwhite transition-colors">浏览所有日志 View All</a>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
+                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
+                    <h4 class="font-serifcn text-lg tracking-widest mb-2">山顶日记</h4>
+                    <p class="font-serifen text-xs text-gray-400">Mountain Journal</p>
+                </a>
+                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
+                    <h4 class="font-serifcn text-lg tracking-widest mb-2">茶席记录</h4>
+                    <p class="font-serifen text-xs text-gray-400">Tea Notes</p>
+                </a>
+                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
+                    <h4 class="font-serifcn text-lg tracking-widest mb-2">耕读菜园</h4>
+                    <p class="font-serifen text-xs text-gray-400">Farming Notes</p>
+                </a>
+                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
+                    <h4 class="font-serifcn text-lg tracking-widest mb-2">少年与荒野</h4>
+                    <p class="font-serifen text-xs text-gray-400">Youth and the Wild</p>
+                </a>
+                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
+                    <h4 class="font-serifcn text-lg tracking-widest mb-2">野外生活</h4>
+                    <p class="font-serifen text-xs text-gray-400">Wilderness Living</p>
+                </a>
+                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
+                    <h4 class="font-serifcn text-lg tracking-widest mb-2">食养手记</h4>
+                    <p class="font-serifen text-xs text-gray-400">Nourishing Notes</p>
+                </a>
+                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors md:col-span-2 lg:col-span-2">
+                    <h4 class="font-serifcn text-lg tracking-widest mb-2">禅修与身心</h4>
+                    <p class="font-serifen text-xs text-gray-400">Inner Cultivation</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 bg-offwhite">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-16 lg:gap-24">
+            <div class="lg:w-1/2">
+                <h2 class="font-serifen text-mist tracking-[0.2em] uppercase text-sm mb-4">Contact</h2>
+                <h3 class="font-serifcn text-4xl text-charcoal mb-8 tracking-widest">联系合作</h3>
+                
+                <p class="font-sans text-charcoal leading-loose mb-6">
+                    如您希望合作茶道课程、文化雅集、少年自然教育、山野生活体验、品牌内容共创或国际文化交流，欢迎联系苍岭清舍。
+                </p>
+                <p class="font-serifen text-mist italic leading-relaxed mb-12">
+                    For collaborations, tea gatherings, cultural workshops, youth wilderness education, mountain lifestyle experiences, brand partnerships, or international cultural exchange, please contact Cangling Qing She.
+                </p>
+
+                <div class="space-y-4 font-sans text-sm tracking-widest text-charcoal">
+                    <p>Email: <a href="mailto:hello@canglingqingshe.com" class="border-b border-charcoal pb-1 hover:text-wood hover:border-wood transition-colors">hello@canglingqingshe.com</a></p>
+                    <p>WeChat: CanglingQingShe</p>
+                    <p class="mt-8 pt-8 border-t border-gray-300">Location: 深山之间 / Mountains, East Asia</p>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="lg:w-1/2 bg-white p-8 md:p-12 shadow-sm border border-gray-100">
+                <form class="flex flex-col gap-8">
+                    <div>
+                        <label for="name" class="block font-sans text-xs tracking-[0.1em] text-mist mb-2 uppercase">姓名 Name</label>
+                        <input type="text" id="name" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent font-sans" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block font-sans text-xs tracking-[0.1em] text-mist mb-2 uppercase">邮箱 Email</label>
+                        <input type="email" id="email" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent font-sans" required>
+                    </div>
+                    <div>
+                        <label for="interest" class="block font-sans text-xs tracking-[0.1em] text-mist mb-2 uppercase">合作意向 Inquiry Type</label>
+                        <select id="interest" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent font-sans appearance-none rounded-none text-charcoal">
+                            <option value="">选择类别 Select...</option>
+                            <option value="tea">茶道课程 / Tea Gatherings</option>
+                            <option value="youth">少年自然教育 / Youth Education</option>
+                            <option value="brand">品牌合作 / Brand Partnership</option>
+                            <option value="other">其他 / Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block font-sans text-xs tracking-[0.1em] text-mist mb-2 uppercase">留言 Message</label>
+                        <textarea id="message" rows="4" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent font-sans resize-none" required></textarea>
+                    </div>
+                    <button type="button" class="mt-4 bg-charcoal text-offwhite py-4 font-sans text-sm tracking-[0.2em] hover:bg-wood transition-colors w-full sm:w-auto px-12 uppercase">
+                        寄出信件 Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-gray-500 py-12 text-center text-xs font-sans tracking-[0.2em] border-t border-gray-800">
+        <p>© 2026 CANGLING QING SHE 苍岭清舍. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'text-offwhite', 'py-6');
+                navbar.classList.add('bg-offwhite', 'text-charcoal', 'py-4', 'shadow-sm');
+                // Change link hover color for dark text
+                const links = navbar.querySelectorAll('nav a');
+                links.forEach(link => {
+                    link.classList.remove('hover:text-wood');
+                    link.classList.add('hover:text-pine');
+                });
+            } else {
+                navbar.classList.add('bg-transparent', 'text-offwhite', 'py-6');
+                navbar.classList.remove('bg-offwhite', 'text-charcoal', 'py-4', 'shadow-sm');
+                const links = navbar.querySelectorAll('nav a');
+                links.forEach(link => {
+                    link.classList.add('hover:text-wood');
+                    link.classList.remove('hover:text-pine');
+                });
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                // Small delay to allow display:block to apply before animating opacity
+                setTimeout(() => {
+                    menu.classList.remove('opacity-0');
+                    menu.classList.add('opacity-100');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                menu.classList.remove('opacity-100');
+                menu.classList.add('opacity-0');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300); // match transition duration
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
+</body>
+</html>
