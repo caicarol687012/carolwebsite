@@ -379,42 +379,65 @@
                     <h2 class="font-serifen text-wood tracking-[0.2em] uppercase text-sm mb-4">Journal</h2>
                     <h3 class="font-serifcn text-4xl tracking-widest">山居日志</h3>
                 </div>
-                <a href="#" class="mt-6 md:mt-0 text-sm font-sans tracking-widest border-b border-wood text-wood pb-1 hover:text-offwhite hover:border-offwhite transition-colors">浏览所有日志 View All</a>
+                <a href="https://www.xiaohongshu.com/user/profile/5f7fff65000000000100a6d9" target="_blank" rel="noopener" class="mt-6 md:mt-0 text-sm font-sans tracking-widest border-b border-wood text-wood pb-1 hover:text-offwhite hover:border-offwhite transition-colors">浏览所有日志 View All</a>
             </div>
 
-            <!-- Categories Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
-                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
-                    <h4 class="font-serifcn text-lg tracking-widest mb-2">山顶日记</h4>
-                    <p class="font-serifen text-xs text-gray-400">Mountain Journal</p>
-                </a>
-                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
-                    <h4 class="font-serifcn text-lg tracking-widest mb-2">茶席记录</h4>
-                    <p class="font-serifen text-xs text-gray-400">Tea Notes</p>
-                </a>
-                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
-                    <h4 class="font-serifcn text-lg tracking-widest mb-2">耕读菜园</h4>
-                    <p class="font-serifen text-xs text-gray-400">Farming Notes</p>
-                </a>
-                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
-                    <h4 class="font-serifcn text-lg tracking-widest mb-2">少年与荒野</h4>
-                    <p class="font-serifen text-xs text-gray-400">Youth and the Wild</p>
-                </a>
-                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
-                    <h4 class="font-serifcn text-lg tracking-widest mb-2">野外生活</h4>
-                    <p class="font-serifen text-xs text-gray-400">Wilderness Living</p>
-                </a>
-                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors">
-                    <h4 class="font-serifcn text-lg tracking-widest mb-2">食养手记</h4>
-                    <p class="font-serifen text-xs text-gray-400">Nourishing Notes</p>
-                </a>
-                <a href="#" class="group block border border-gray-700 p-6 hover:border-wood transition-colors md:col-span-2 lg:col-span-2">
-                    <h4 class="font-serifcn text-lg tracking-widest mb-2">禅修与身心</h4>
-                    <p class="font-serifen text-xs text-gray-400">Inner Cultivation</p>
-                </a>
-            </div>
+            <!-- Journal filters -->
+            <div id="journal-filters" class="flex flex-wrap gap-3 mb-12"></div>
+
+            <!-- Journal card wall (data in journal.js) -->
+            <div id="journal-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8"></div>
+
+            <p class="mt-16 text-center font-serifcn tracking-widest text-sm text-gray-400">
+                <a href="https://www.xiaohongshu.com/user/profile/5f7fff65000000000100a6d9" target="_blank" rel="noopener" class="border-b border-wood text-wood pb-1 hover:text-offwhite hover:border-offwhite transition-colors">更多日更内容见小红书 @苍岭清舍｜美国山居</a>
+            </p>
         </div>
     </section>
+    <script src="journal.js"></script>
+    <script>
+    (function () {
+        var PATHS = [
+            ['all', '全部', 'All'], ['tea', '茶', 'Tea Living'], ['martial', '武', 'Movement'],
+            ['wild', '野', 'Wilderness'], ['youth', '少年与荒野', 'Youth & the Wild'],
+            ['food', '食养', 'Nourishing'], ['farm', '耕读', 'Farming'], ['zen', '禅修', 'Meditation']
+        ];
+        var NAME = {}; PATHS.forEach(function (p) { NAME[p[0]] = p[1]; });
+        var data = (window.JOURNAL || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+        var grid = document.getElementById('journal-grid');
+        var bar = document.getElementById('journal-filters');
+        function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+        function render(key) {
+            grid.innerHTML = data.filter(function (n) { return key === 'all' || n.pathway === key; }).map(function (n) {
+                var cover = n.cover
+                    ? '<img src="' + n.cover + '" alt="' + esc(n.title) + '" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">'
+                    : '<div class="w-full h-full flex items-center justify-center bg-pine text-offwhite font-serifcn text-3xl tracking-widest">' + esc(NAME[n.pathway] || '山居') + '</div>';
+                var badge = n.type === 'video'
+                    ? '<span class="absolute top-2 right-2 bg-charcoal/70 text-offwhite text-[10px] font-sans tracking-widest px-2 py-1">▶ 视频</span>' : '';
+                return '<a href="' + n.url + '" target="_blank" rel="noopener" class="group block border border-gray-700 hover:border-wood transition-colors">' +
+                    '<div class="relative aspect-[3/4] overflow-hidden bg-gray-800">' + cover + badge + '</div>' +
+                    '<div class="p-4">' +
+                    '<span class="inline-block text-[10px] font-sans tracking-widest text-wood border border-wood/60 px-2 py-0.5 mb-3">' + esc(NAME[n.pathway] || '') + '</span>' +
+                    '<h4 class="font-serifcn text-sm md:text-base tracking-wide leading-relaxed mb-2 group-hover:text-wood transition-colors">' + esc(n.title) + '</h4>' +
+                    '<p class="font-serifen text-xs text-gray-400">' + n.date.replace(/-/g, '.') + '</p>' +
+                    '</div></a>';
+            }).join('');
+            Array.prototype.forEach.call(bar.children, function (b) {
+                var on = b.getAttribute('data-k') === key;
+                b.className = 'text-xs md:text-sm font-sans tracking-widest px-4 py-2 border transition-colors ' +
+                    (on ? 'border-wood bg-wood text-charcoal' : 'border-gray-700 text-gray-300 hover:border-wood hover:text-wood');
+            });
+        }
+        PATHS.forEach(function (p) {
+            var n = p[0] === 'all' ? data.length : data.filter(function (x) { return x.pathway === p[0]; }).length;
+            var b = document.createElement('button');
+            b.type = 'button'; b.setAttribute('data-k', p[0]);
+            b.textContent = p[1] + ' ' + p[2] + ' · ' + n;
+            b.onclick = function () { render(p[0]); };
+            bar.appendChild(b);
+        });
+        render('all');
+    })();
+    </script>
 
     <!-- Contact Section -->
     <section id="contact" class="py-32 bg-offwhite">
