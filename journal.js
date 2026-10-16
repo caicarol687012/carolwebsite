@@ -1,6 +1,22 @@
 // 山居日志数据：新笔记加到数组最前面即可。pathway 取值: tea martial wild youth food farm zen
 window.JOURNAL = [
  {
+  "title": "蛇吃了鹌鹑，杀它，还是让它吃完这顿饭？ The Snake: Kill It, or Let It Eat?",
+  "url": "https://youtu.be/PtaWD_f_jA0",
+  "date": "2026-10-15",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-PtaWD_f_jA0.jpg"
+ },
+ {
+  "title": "YouTube Short｜Kill It, or Let It Eat? 杀它，还是让它吃？",
+  "url": "https://youtube.com/shorts/Mihmt2cHhcA",
+  "date": "2026-10-15",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-Mihmt2cHhcA.jpg"
+ },
+ {
   "title": "《带孩子见世面，是养大了欲望，还是养钝了好奇心？》",
   "url": "https://www.xiaohongshu.com/explore/6acb1982000000000a022841",
   "date": "2026-10-10",
