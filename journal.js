@@ -1,6 +1,14 @@
 // 山居日志数据：新笔记加到数组最前面即可。pathway 取值: tea martial wild youth food farm zen
 window.JOURNAL = [
  {
+  "title": "没有桌子，也没有墙，只有草地上的一席茶 No table, no walls — just tea on the grass",
+  "url": "https://youtube.com/shorts/FAkdFS9W1JU",
+  "date": "2026-10-18",
+  "type": "video",
+  "pathway": "tea",
+  "cover": "images/journal/yt-FAkdFS9W1JU.jpg"
+ },
+ {
   "title": "鸭子只在我们家停留了很短的时间，三宝学会了告别 Our duck stayed for a short time. My son learned goodbye.",
   "url": "https://youtube.com/shorts/ltgI3TZNPJk",
   "date": "2026-10-18",
