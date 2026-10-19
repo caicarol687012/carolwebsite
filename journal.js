@@ -1,6 +1,22 @@
 // 山居日志数据：新笔记加到数组最前面即可。pathway 取值: tea martial wild youth food farm zen
 window.JOURNAL = [
  {
+  "title": "鸭子只在我们家停留了很短的时间，三宝学会了告别 Our duck stayed for a short time. My son learned goodbye.",
+  "url": "https://youtube.com/shorts/ltgI3TZNPJk",
+  "date": "2026-10-18",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-ltgI3TZNPJk.jpg"
+ },
+ {
+  "title": "我们以为她熬不过那一夜，后来她下了一个蛋 We thought she wouldn't survive the night. Then she laid an egg.",
+  "url": "https://youtube.com/shorts/kJRTbDUv7Zk",
+  "date": "2026-10-18",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-kJRTbDUv7Zk.jpg"
+ },
+ {
   "title": "蛇吃了鹌鹑，杀它，还是让它吃完这顿饭？ The Snake: Kill It, or Let It Eat?",
   "url": "https://youtu.be/PtaWD_f_jA0",
   "date": "2026-10-15",
