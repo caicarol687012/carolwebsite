@@ -27,7 +27,7 @@ document.getElementById('g-list').innerHTML=(window.GATHERINGS||[]).map(function
  '<span class="text-xs tracking-widest '+(e.upcoming?'text-pine':'text-mist')+'">'+(e.upcoming?'即将举行 Upcoming':'往期 Past')+'</span>'+
  '<h3 class="font-serifcn text-2xl tracking-widest mt-3 mb-1">'+e.title_cn+'</h3><p class="font-serifen italic text-mist mb-4">'+e.title_en+'</p>'+
  '<p class="text-sm tracking-widest text-earth mb-4">'+e.when_cn+' ｜ '+e.when_en+'</p>'+
- '<p class="leading-loose text-sm">'+e.summary_cn+'</p><p class="font-serifen italic text-mist text-sm mt-2">'+e.summary_en+'</p></a>';}).join('');
+ '<p class="leading-loose text-sm">'+e.summary_cn+'</p><p class="font-serifen italic text-mist text-sm mt-2">'+e.summary_en+'</p>'+(e.upcoming?'<span class="inline-block mt-6 bg-charcoal text-offwhite py-3 px-8 text-sm tracking-[0.2em]">点此报名 Sign Up →</span>':'')+'</a>';}).join('');
 </script>
 <footer class="bg-charcoal text-gray-500 py-12 text-center text-xs font-sans tracking-[0.2em]"><p>© 2026 苍岭清舍 · Eastern Mountain Life. ALL RIGHTS RESERVED.</p></footer>
 </body></html>
