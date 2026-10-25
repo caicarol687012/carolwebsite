@@ -23,7 +23,7 @@
 <script src="events.js"></script>
 <script>
 document.getElementById('g-list').innerHTML=(window.GATHERINGS||[]).map(function(e){
- return '<a href="'+e.page+'" class="block bg-white border border-gray-200 hover:border-wood p-8 md:p-10 transition-colors">'+
+ return '<a href="'+e.page+(e.upcoming?'#signup':'')+'" class="block bg-white border border-gray-200 hover:border-wood p-8 md:p-10 transition-colors">'+
  '<span class="text-xs tracking-widest '+(e.upcoming?'text-pine':'text-mist')+'">'+(e.upcoming?'即将举行 Upcoming':'往期 Past')+'</span>'+
  '<h3 class="font-serifcn text-2xl tracking-widest mt-3 mb-1">'+e.title_cn+'</h3><p class="font-serifen italic text-mist mb-4">'+e.title_en+'</p>'+
  '<p class="text-sm tracking-widest text-earth mb-4">'+e.when_cn+' ｜ '+e.when_en+'</p>'+
