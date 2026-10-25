@@ -79,6 +79,7 @@
             <a href="#about" class="hover:text-wood transition-colors">关于 About</a>
             <a href="#pathways" class="hover:text-wood transition-colors">七大板块 Pathways</a>
             <a href="#journal" class="hover:text-wood transition-colors">山居日志 Journal</a>
+            <a href="gatherings/" class="hover:text-wood transition-colors">雅集 Gatherings</a>
             <a href="#contact" class="hover:text-wood transition-colors">联系 Contact</a>
         </nav>
 
@@ -94,6 +95,7 @@
         <a href="#about" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">关于 About</a>
         <a href="#pathways" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">七大板块 Pathways</a>
         <a href="#journal" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">山居日志 Journal</a>
+            <a href="gatherings/" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">雅集 Gatherings</a>
         <a href="#contact" class="font-serifcn tracking-widest text-xl hover:text-wood" onclick="toggleMenu()">联系 Contact</a>
     </div>
 
@@ -124,6 +126,20 @@
             </div>
         </div>
     </section>
+
+    <!-- Gatherings Banner (data in gatherings/events.js) -->
+    <section id="gatherings-banner" class="bg-pine text-offwhite py-6 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <p class="font-serifcn tracking-widest text-base md:text-lg"><span class="text-wood mr-3">雅集 Gatherings</span><span id="gb-title">山居雅集</span></p>
+            <a id="gb-link" href="gatherings/" class="border border-wood text-wood px-6 py-2 text-sm tracking-[0.2em] hover:bg-wood hover:text-charcoal transition-colors">了解详情 Details</a>
+        </div>
+    </section>
+    <script src="gatherings/events.js"></script>
+    <script>
+    (function(){var e=(window.GATHERINGS||[]).filter(function(x){return x.upcoming;})[0];
+    if(!e){return;}document.getElementById('gb-title').textContent=e.title_cn+' · '+e.when_cn+' ｜ '+e.title_en+' · '+e.when_en;
+    document.getElementById('gb-link').href='gatherings/'+e.page;})();
+    </script>
 
     <!-- Core Motto Section -->
     <section class="py-24 md:py-32 px-6 bg-offwhite">
@@ -454,41 +470,18 @@
                 </p>
 
                 <div class="space-y-4 font-sans text-sm tracking-widest text-charcoal">
-                    <p>Email: <a href="mailto:hello@canglingqingshe.com" class="border-b border-charcoal pb-1 hover:text-wood hover:border-wood transition-colors">hello@canglingqingshe.com</a></p>
-                    <p>WeChat: CanglingQingShe</p>
-                    <p class="mt-8 pt-8 border-t border-gray-300">Location: 深山之间 / Mountains, East Asia</p>
+                    <p>联系方式即将更新 / Contact details coming soon</p>
+                    <p>小红书 RED: <a href="https://www.xiaohongshu.com/user/profile/5f7fff65000000000100a6d9" target="_blank" rel="noopener" class="border-b border-charcoal pb-1 hover:text-wood hover:border-wood transition-colors">@苍岭清舍｜美国山居</a></p>
+                    <p>YouTube: <a href="https://www.youtube.com/@EasternMountainLife" target="_blank" rel="noopener" class="border-b border-charcoal pb-1 hover:text-wood hover:border-wood transition-colors">@EasternMountainLife</a></p>
                 </div>
             </div>
 
-            <!-- Form -->
-            <div class="lg:w-1/2 bg-white p-8 md:p-12 shadow-sm border border-gray-100">
-                <form class="flex flex-col gap-8">
-                    <div>
-                        <label for="name" class="block font-sans text-xs tracking-[0.1em] text-mist mb-2 uppercase">姓名 Name</label>
-                        <input type="text" id="name" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent font-sans" required>
-                    </div>
-                    <div>
-                        <label for="email" class="block font-sans text-xs tracking-[0.1em] text-mist mb-2 uppercase">邮箱 Email</label>
-                        <input type="email" id="email" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent font-sans" required>
-                    </div>
-                    <div>
-                        <label for="interest" class="block font-sans text-xs tracking-[0.1em] text-mist mb-2 uppercase">合作意向 Inquiry Type</label>
-                        <select id="interest" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent font-sans appearance-none rounded-none text-charcoal">
-                            <option value="">选择类别 Select...</option>
-                            <option value="tea">茶道课程 / Tea Gatherings</option>
-                            <option value="youth">少年自然教育 / Youth Education</option>
-                            <option value="brand">品牌合作 / Brand Partnership</option>
-                            <option value="other">其他 / Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="message" class="block font-sans text-xs tracking-[0.1em] text-mist mb-2 uppercase">留言 Message</label>
-                        <textarea id="message" rows="4" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent font-sans resize-none" required></textarea>
-                    </div>
-                    <button type="button" class="mt-4 bg-charcoal text-offwhite py-4 font-sans text-sm tracking-[0.2em] hover:bg-wood transition-colors w-full sm:w-auto px-12 uppercase">
-                        寄出信件 Send Message
-                    </button>
-                </form>
+            <!-- Gatherings card (form removed: it had no way to send) -->
+            <div class="lg:w-1/2 bg-white p-8 md:p-12 shadow-sm border border-gray-100 flex flex-col justify-center">
+                <h4 class="font-serifcn text-2xl text-charcoal tracking-widest mb-4">雅集 Gatherings</h4>
+                <p class="font-sans text-charcoal leading-loose mb-4">山居雅集的时间、名额与报名方式，会在雅集页面公布。</p>
+                <p class="font-serifen text-mist italic leading-relaxed mb-8">Dates, spots and sign-up details for our mountain gatherings are posted on the Gatherings page.</p>
+                <a href="gatherings/" class="self-start bg-charcoal text-offwhite py-4 px-12 font-sans text-sm tracking-[0.2em] hover:bg-wood transition-colors uppercase">查看雅集 View Gatherings</a>
             </div>
         </div>
     </section>

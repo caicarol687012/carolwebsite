@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅集 Gatherings · 苍岭清舍 · Eastern Mountain Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{offwhite:"#F7F5F0",charcoal:"#2C2C2C",pine:"#375043",earth:"#6B543A",mist:"#7A7A7A",wood:"#D4B895"},fontFamily:{serifcn:["\"Noto Serif SC\"","serif"],serifen:["\"Playfair Display\"","serif"],sans:["\"Inter\"","sans-serif"]}}}}</script>
+</head>
+<body class="font-sans antialiased bg-offwhite text-charcoal">
+<header class="bg-charcoal text-offwhite py-5 px-6 md:px-12 flex justify-between items-center">
+  <a href="../" class="font-serifcn text-xl tracking-[0.2em] hover:text-wood">苍岭清舍</a>
+  <nav class="flex gap-6 text-sm tracking-widest font-light"><a href="../" class="hover:text-wood">首页 Home</a><a href="./" class="hover:text-wood">雅集 Gatherings</a><a href="../#contact" class="hover:text-wood">联系 Contact</a></nav>
+</header>
+<section class="py-24 px-6 md:px-12 max-w-5xl mx-auto">
+  <h2 class="font-serifen text-mist tracking-[0.2em] uppercase text-sm mb-4">Gatherings</h2>
+  <h1 class="font-serifcn text-4xl md:text-5xl tracking-widest mb-8">山居雅集</h1>
+  <p class="leading-loose mb-3">在山中相聚：习武、站桩、饮茶、交流身心之道。</p>
+  <p class="font-serifen text-mist italic leading-relaxed mb-16">Gathering in the mountains to practise, stand, share tea and talk about body and mind.</p>
+  <div id="g-list" class="grid gap-8"></div>
+</section>
+<script src="events.js"></script>
+<script>
+document.getElementById('g-list').innerHTML=(window.GATHERINGS||[]).map(function(e){
+ return '<a href="'+e.page+'" class="block bg-white border border-gray-200 hover:border-wood p-8 md:p-10 transition-colors">'+
+ '<span class="text-xs tracking-widest '+(e.upcoming?'text-pine':'text-mist')+'">'+(e.upcoming?'即将举行 Upcoming':'往期 Past')+'</span>'+
+ '<h3 class="font-serifcn text-2xl tracking-widest mt-3 mb-1">'+e.title_cn+'</h3><p class="font-serifen italic text-mist mb-4">'+e.title_en+'</p>'+
+ '<p class="text-sm tracking-widest text-earth mb-4">'+e.when_cn+' ｜ '+e.when_en+'</p>'+
+ '<p class="leading-loose text-sm">'+e.summary_cn+'</p><p class="font-serifen italic text-mist text-sm mt-2">'+e.summary_en+'</p></a>';}).join('');
+</script>
+<footer class="bg-charcoal text-gray-500 py-12 text-center text-xs font-sans tracking-[0.2em]"><p>© 2026 苍岭清舍 · Eastern Mountain Life. ALL RIGHTS RESERVED.</p></footer>
+</body></html>
