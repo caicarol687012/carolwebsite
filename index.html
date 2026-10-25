@@ -65,6 +65,19 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        @keyframes bannerGlow { 0%,100% { box-shadow: inset 0 0 0 rgba(212,184,149,0); } 50% { box-shadow: inset 0 0 40px rgba(212,184,149,0.25); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes softPulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212,184,149,0.6); } 50% { transform: scale(1.04); box-shadow: 0 0 0 12px rgba(212,184,149,0); } }
+        @keyframes dotBlink { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+        #gatherings-banner { animation: bannerGlow 4s ease-in-out infinite; background-image: linear-gradient(110deg, transparent 30%, rgba(212,184,149,0.12) 50%, transparent 70%); background-size: 200% 100%; }
+        #gatherings-banner.shine { animation: bannerGlow 4s ease-in-out infinite, shimmer 6s linear infinite; }
+        .live-dot { display:inline-block; width:8px; height:8px; border-radius:9999px; background:#D4B895; margin-right:10px; animation: dotBlink 1.6s ease-in-out infinite; vertical-align: middle; }
+        .pulse-btn { animation: softPulse 2.2s ease-in-out infinite; }
+        #signupPop { transition: opacity .6s ease; }
+        #signupPop .pop-card { transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .7s ease; transform: translateY(40px); opacity: 0; }
+        #signupPop.show { opacity: 1; pointer-events: auto; }
+        #signupPop.show .pop-card { transform: translateY(0); opacity: 1; }
+        @media (prefers-reduced-motion: reduce) { #gatherings-banner, .live-dot, .pulse-btn { animation: none !important; } }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-pine selection:text-offwhite">
@@ -128,10 +141,10 @@
     </section>
 
     <!-- Gatherings Banner (data in gatherings/events.js) -->
-    <section id="gatherings-banner" class="bg-pine text-offwhite py-6 px-6 md:px-12">
+    <section id="gatherings-banner" class="shine bg-pine text-offwhite py-6 px-6 md:px-12">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <p class="font-serifcn tracking-widest text-base md:text-lg"><span class="text-wood mr-3">雅集 Gatherings</span><span id="gb-title">山居雅集</span></p>
-            <a id="gb-link" href="gatherings/" class="border border-wood text-wood px-6 py-2 text-sm tracking-[0.2em] hover:bg-wood hover:text-charcoal transition-colors">了解详情 Details</a>
+            <p class="font-serifcn tracking-widest text-base md:text-lg"><span class="live-dot"></span><span class="text-wood mr-3">雅集 Gatherings</span><span id="gb-title">山居雅集</span></p>
+            <a id="gb-link" href="gatherings/" class="pulse-btn border border-wood text-wood px-6 py-2 text-sm tracking-[0.2em] hover:bg-wood hover:text-charcoal transition-colors">了解详情 Details</a>
         </div>
     </section>
     <script src="gatherings/events.js"></script>
@@ -490,6 +503,41 @@
     <footer class="bg-charcoal text-gray-500 py-12 text-center text-xs font-sans tracking-[0.2em] border-t border-gray-800">
         <p>© 2026 苍岭清舍 · Eastern Mountain Life. ALL RIGHTS RESERVED.</p>
     </footer>
+
+
+    <!-- Sign-up pop-up (driven by gatherings/events.js) -->
+    <div id="signupPop" class="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-4 bg-charcoal/50 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="sp-title" hidden>
+        <div class="pop-card relative w-full max-w-md bg-offwhite border-t-4 border-wood shadow-2xl p-8 sm:p-10 text-center">
+            <button id="sp-close" type="button" aria-label="关闭 Close" class="absolute top-3 right-4 text-mist hover:text-charcoal text-3xl leading-none">&times;</button>
+            <p class="font-sans text-xs tracking-[0.25em] text-pine mb-3"><span class="live-dot"></span>山居雅集报名中 · Gathering sign-up open</p>
+            <h3 id="sp-title" class="font-serifcn text-2xl sm:text-3xl tracking-widest text-charcoal mb-1"></h3>
+            <p id="sp-title-en" class="font-serifen italic text-mist mb-4"></p>
+            <p id="sp-when" class="whitespace-pre-line font-sans text-sm tracking-widest text-earth mb-2"></p>
+            <p id="sp-until" class="font-sans text-xs tracking-widest text-mist mb-8"></p>
+            <a id="sp-go" href="gatherings/" class="pulse-btn inline-block w-full sm:w-auto bg-pine text-offwhite px-12 py-4 font-sans text-base tracking-[0.25em] hover:bg-charcoal transition-colors">立即报名 Sign Up</a>
+        </div>
+    </div>
+    <script>
+    (function(){
+        var today=new Date(); var t=today.getFullYear()+'-'+('0'+(today.getMonth()+1)).slice(-2)+'-'+('0'+today.getDate()).slice(-2);
+        var e=(window.GATHERINGS||[]).filter(function(x){return x.upcoming&&x.signup_open&&(!x.signup_until||t<=x.signup_until);})[0];
+        if(!e){return;}
+        var key='signupPopClosed:'+e.page, last=0;
+        try{last=+localStorage.getItem(key)||0;}catch(err){}
+        if(Date.now()-last<864e5){return;}
+        var pop=document.getElementById('signupPop');
+        document.getElementById('sp-title').textContent=e.title_cn;
+        document.getElementById('sp-title-en').textContent=e.title_en;
+        document.getElementById('sp-when').textContent=e.when_cn+'\n'+e.when_en;
+        if(e.signup_until){var d=e.signup_until.split('-');document.getElementById('sp-until').textContent='报名截至 '+(+d[1])+'月'+(+d[2])+'日 · Sign up by '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d[1]-1]+' '+(+d[2]);}
+        document.getElementById('sp-go').href='gatherings/'+e.page+'#signup';
+        function close(){pop.classList.remove('show');try{localStorage.setItem(key,String(Date.now()));}catch(err){}setTimeout(function(){pop.hidden=true;},600);}
+        document.getElementById('sp-close').onclick=close;
+        pop.addEventListener('click',function(ev){if(ev.target===pop){close();}});
+        document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!pop.hidden){close();}});
+        setTimeout(function(){pop.hidden=false;requestAnimationFrame(function(){requestAnimationFrame(function(){pop.classList.add('show');});});},1500);
+    })();
+    </script>
 
     <!-- Interactive Scripts -->
     <script>
