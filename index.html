@@ -515,8 +515,13 @@
             <h3 id="sp-title" class="font-serifcn text-2xl sm:text-3xl tracking-widest text-charcoal mb-1"></h3>
             <p id="sp-title-en" class="font-serifen italic text-mist mb-4"></p>
             <p id="sp-when" class="whitespace-pre-line font-sans text-sm tracking-widest text-earth mb-2"></p>
-            <p id="sp-until" class="font-sans text-xs tracking-widest text-mist mb-8"></p>
-            <a id="sp-go" href="gatherings/" class="pulse-btn inline-block w-full sm:w-auto bg-pine text-offwhite px-12 py-4 font-sans text-base tracking-[0.25em] hover:bg-charcoal transition-colors">立即报名 Sign Up</a>
+            <p id="sp-until" class="font-sans text-xs tracking-widest text-mist mb-4"></p>
+            <p id="sp-intro" class="font-serifcn text-sm leading-relaxed text-charcoal mb-1"></p>
+            <p id="sp-intro-en" class="font-serifen italic text-sm text-mist mb-6"></p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a id="sp-more" href="gatherings/" class="pulse-btn inline-block w-full sm:w-auto bg-pine text-offwhite px-8 py-4 font-sans text-base tracking-[0.2em] hover:bg-charcoal transition-colors">了解详情 Learn More</a>
+                <a id="sp-go" href="gatherings/" class="inline-block w-full sm:w-auto border border-charcoal text-charcoal px-8 py-3 sm:py-4 font-sans text-sm tracking-[0.2em] hover:bg-charcoal hover:text-offwhite transition-colors">立即报名 Sign Up</a>
+            </div>
         </div>
     </div>
     <script>
@@ -533,6 +538,7 @@
         document.getElementById('sp-when').textContent=e.when_cn+'\n'+e.when_en;
         if(e.signup_until){var d=e.signup_until.split('-');document.getElementById('sp-until').textContent='报名截至 '+(+d[1])+'月'+(+d[2])+'日 · Sign up by '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d[1]-1]+' '+(+d[2]);}
         document.getElementById('sp-go').href='gatherings/'+e.page+'#signup';
+        document.getElementById('sp-more').href='gatherings/'+e.page;document.getElementById('sp-intro').textContent=e.intro_cn||'';document.getElementById('sp-intro-en').textContent=e.intro_en||'';
         function close(){pop.classList.remove('show');try{localStorage.setItem(key,String(Date.now()));}catch(err){}setTimeout(function(){pop.hidden=true;},600);}
         document.getElementById('sp-close').onclick=close;
         pop.addEventListener('click',function(ev){if(ev.target===pop){close();}});
