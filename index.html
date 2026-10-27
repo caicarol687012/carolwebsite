@@ -85,6 +85,8 @@
         #signupPop { transition: opacity .6s ease; }
         #signupPop .pop-card { transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .7s ease; transform: translateY(40px); opacity: 0; }
         #signupPop.show { opacity: 1; pointer-events: auto; }
+        #signupPop[hidden] { display: none !important; }
+        body { padding-bottom: 64px; }
         #signupPop.show .pop-card { transform: translateY(0); opacity: 1; }
         @media (prefers-reduced-motion: reduce) { #gatherings-banner, .live-dot, .pulse-btn { animation: none !important; } }
     </style>
@@ -516,9 +518,16 @@
     </footer>
 
 
+    <!-- Sticky gathering bar -->
+    <div id="yajiBar" style="position:fixed;left:0;right:0;bottom:0;z-index:9000" class="bg-pine text-offwhite shadow-2xl border-t-2 border-wood">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-2 px-3 py-3 font-sans text-sm">
+            <span class="font-serifcn tracking-widest whitespace-nowrap">三日武学雅集 · 11/22–24</span>
+            <span class="flex gap-2 shrink-0"><a href="gatherings/2026-11-shanju-yaji.html" class="border border-wood text-wood px-3 py-2 whitespace-nowrap">了解详情</a><a href="gatherings/2026-11-shanju-yaji.html#signup" class="bg-wood text-charcoal px-3 py-2 whitespace-nowrap">立即报名</a></span>
+        </div>
+    </div>
     <!-- Sign-up pop-up (driven by gatherings/events.js) -->
-    <div id="signupPop" class="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-4 bg-charcoal/50 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="sp-title" hidden>
-        <div class="pop-card relative w-full max-w-md bg-offwhite border-t-4 border-wood shadow-2xl p-8 sm:p-10 text-center">
+    <div id="signupPop" class="fixed inset-0 flex items-center justify-center p-4 bg-charcoal/60 opacity-0 pointer-events-none" style="position:fixed;inset:0;z-index:9999" role="dialog" aria-modal="true" aria-labelledby="sp-title" hidden>
+        <div class="pop-card relative w-full max-w-md max-h-[90vh] overflow-y-auto bg-offwhite border-t-4 border-wood shadow-2xl p-8 sm:p-10 text-center">
             <button id="sp-close" type="button" aria-label="关闭 Close" class="absolute top-3 right-4 text-mist hover:text-charcoal text-3xl leading-none">&times;</button>
             <p class="font-sans text-xs tracking-[0.25em] text-pine mb-3"><span class="live-dot"></span>山居雅集报名中 · Gathering sign-up open</p>
             <h3 id="sp-title" class="font-serifcn text-2xl sm:text-3xl tracking-widest text-charcoal mb-1"></h3>
@@ -539,8 +548,8 @@
         var e=(window.GATHERINGS||[]).filter(function(x){return x.upcoming&&x.signup_open&&(!x.signup_until||t<=x.signup_until);})[0];
         if(!e){return;}
         var key='signupPopClosed:'+e.page, last=0;
-        try{last=+localStorage.getItem(key)||0;}catch(err){}
-        if(Date.now()-last<864e5){return;}
+        try{last=sessionStorage.getItem(key);}catch(err){}
+        if(last){return;}
         var pop=document.getElementById('signupPop');
         document.getElementById('sp-title').textContent=e.title_cn;
         document.getElementById('sp-title-en').textContent=e.title_en;
@@ -548,11 +557,11 @@
         if(e.signup_until){var d=e.signup_until.split('-');document.getElementById('sp-until').textContent='报名截至 '+(+d[1])+'月'+(+d[2])+'日 · Sign up by '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d[1]-1]+' '+(+d[2]);}
         document.getElementById('sp-go').href='gatherings/'+e.page+'#signup';
         document.getElementById('sp-more').href='gatherings/'+e.page;document.getElementById('sp-intro').textContent=e.intro_cn||'';document.getElementById('sp-intro-en').textContent=e.intro_en||'';
-        function close(){pop.classList.remove('show');try{localStorage.setItem(key,String(Date.now()));}catch(err){}setTimeout(function(){pop.hidden=true;},600);}
+        function close(){pop.classList.remove('show');document.documentElement.style.overflow='';document.body.style.overflow='';try{sessionStorage.setItem(key,'1');}catch(err){}setTimeout(function(){pop.hidden=true;},600);}
         document.getElementById('sp-close').onclick=close;
         pop.addEventListener('click',function(ev){if(ev.target===pop){close();}});
         document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!pop.hidden){close();}});
-        setTimeout(function(){pop.hidden=false;requestAnimationFrame(function(){requestAnimationFrame(function(){pop.classList.add('show');});});},1500);
+        pop.hidden=false;document.documentElement.style.overflow='hidden';document.body.style.overflow='hidden';requestAnimationFrame(function(){requestAnimationFrame(function(){pop.classList.add('show');});});
     })();
     </script>
 
