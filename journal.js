@@ -41,7 +41,7 @@ window.JOURNAL = [
   "cover": "images/journal/yt-9k1DAAvi5a4.jpg"
  },
  {
-  "title": "Twenty Years of Martial Arts: What I Really Trained",
+  "title": "习武二十载 Twenty Years of Martial Arts: What I Really Trained",
   "url": "https://youtu.be/NsGgEZGFHwE",
   "date": "2026-10-20",
   "type": "video",
@@ -49,7 +49,7 @@ window.JOURNAL = [
   "cover": "images/journal/yt-NsGgEZGFHwE.jpg"
  },
  {
-  "title": "The Eye of the Tea Table",
+  "title": "茶席之眼 The Eye of the Tea Table",
   "url": "https://youtube.com/shorts/g3bvspwdsic",
   "date": "2026-10-20",
   "type": "video",
@@ -57,7 +57,7 @@ window.JOURNAL = [
   "cover": "images/journal/yt-g3bvspwdsic.jpg"
  },
  {
-  "title": "12 Years of Tea: What Slowing Down Taught Me",
+  "title": "习茶十二载 12 Years of Tea: What Slowing Down Taught Me",
   "url": "https://youtube.com/shorts/oUA_je99vNg",
   "date": "2026-10-19",
   "type": "video",
