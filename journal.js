@@ -1,6 +1,70 @@
 // 山居日志数据：新笔记加到数组最前面即可。pathway 取值: tea martial wild youth food farm zen
 window.JOURNAL = [
  {
+  "title": "小爹地抢了我的窝 He Stole My Bed!",
+  "url": "https://youtube.com/shorts/Ip-so3UMdpo",
+  "date": "2026-10-30",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-Ip-so3UMdpo.jpg"
+ },
+ {
+  "title": "大媳妇安居了 The Bride Has Settled In",
+  "url": "https://youtube.com/shorts/D0UzRLzoq4w",
+  "date": "2026-10-29",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-D0UzRLzoq4w.jpg"
+ },
+ {
+  "title": "九十磅的\"大媳妇\" A 90-lb Bride Marries Into the Mountain",
+  "url": "https://youtube.com/shorts/Ek9VdcZOg_I",
+  "date": "2026-10-29",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-Ek9VdcZOg_I.jpg"
+ },
+ {
+  "title": "九十磅的\"大媳妇\"，嫁进山门第一天 Ninety Pounds of Bride: My First Day Marrying Into the Mountain",
+  "url": "https://youtu.be/Vno9JZ6tBGk",
+  "date": "2026-10-29",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-Vno9JZ6tBGk.jpg"
+ },
+ {
+  "title": "奇门十三剑 Qimen Thirteen Swords",
+  "url": "https://youtube.com/shorts/9k1DAAvi5a4",
+  "date": "2026-10-20",
+  "type": "video",
+  "pathway": "martial",
+  "cover": "images/journal/yt-9k1DAAvi5a4.jpg"
+ },
+ {
+  "title": "Twenty Years of Martial Arts: What I Really Trained",
+  "url": "https://youtu.be/NsGgEZGFHwE",
+  "date": "2026-10-20",
+  "type": "video",
+  "pathway": "martial",
+  "cover": "images/journal/yt-NsGgEZGFHwE.jpg"
+ },
+ {
+  "title": "The Eye of the Tea Table",
+  "url": "https://youtube.com/shorts/g3bvspwdsic",
+  "date": "2026-10-20",
+  "type": "video",
+  "pathway": "tea",
+  "cover": "images/journal/yt-g3bvspwdsic.jpg"
+ },
+ {
+  "title": "12 Years of Tea: What Slowing Down Taught Me",
+  "url": "https://youtube.com/shorts/oUA_je99vNg",
+  "date": "2026-10-19",
+  "type": "video",
+  "pathway": "tea",
+  "cover": "images/journal/yt-oUA_je99vNg.jpg"
+ },
+ {
   "title": "没有桌子，也没有墙，只有草地上的一席茶 No table, no walls — just tea on the grass",
   "url": "https://youtube.com/shorts/FAkdFS9W1JU",
   "date": "2026-10-18",
