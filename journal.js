@@ -1,6 +1,14 @@
 // 山居日志数据：新笔记加到数组最前面即可。pathway 取值: tea martial wild youth food farm zen
 window.JOURNAL = [
  {
+  "title": "瘦老公，胖媳妇，山头从此有人罩 Skinny Husband, Chubby Bride",
+  "url": "https://youtube.com/shorts/lzf2MQqGwPk",
+  "date": "2026-11-01",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-lzf2MQqGwPk.jpg"
+ },
+ {
   "title": "小爹地抢了我的窝 He Stole My Bed!",
   "url": "https://youtube.com/shorts/Ip-so3UMdpo",
   "date": "2026-10-30",
