@@ -1,6 +1,14 @@
 // 山居日志数据：新笔记加到数组最前面即可。pathway 取值: tea martial wild youth food farm zen
 window.JOURNAL = [
  {
+  "title": "马文国教授 · 三日武学雅集 Prof. Ma Wenguo · Three-Day Martial Arts Gathering",
+  "url": "https://youtube.com/shorts/UGuFkz8oIzk",
+  "date": "2026-11-04",
+  "type": "video",
+  "pathway": "martial",
+  "cover": "images/journal/yt-UGuFkz8oIzk.jpg"
+ },
+ {
   "title": "瘦老公，胖媳妇，山头从此有人罩 Skinny Husband, Chubby Bride",
   "url": "https://youtube.com/shorts/lzf2MQqGwPk",
   "date": "2026-11-01",
