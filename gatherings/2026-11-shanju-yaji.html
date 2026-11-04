@@ -91,12 +91,12 @@
   <p class="font-serifcn text-xl text-center tracking-widest mb-1">一桩识己身，共修以致远。</p>
   <p class="font-serifen italic text-center text-mist mb-16">Through one stance, come to know yourself; through practising together, go far.</p>
   <h3 id="signup" class="font-serifcn text-2xl tracking-widest mb-6">报名 Sign-up</h3>
-  <form id="signup-form" action="https://formsubmit.co/caicarol687012@gmail.com" method="POST" class="bg-white border border-gray-200 p-8 md:p-10 flex flex-col gap-6 mb-16">
-    <input type="hidden" name="_subject" value="雅集报名 / Gathering sign-up">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-    <input type="hidden" name="_next" value="https://easternmountainlife.com/gatherings/thanks.html">
+  <form id="signup-form" action="https://api.web3forms.com/submit" method="POST" class="bg-white border border-gray-200 p-8 md:p-10 flex flex-col gap-6 mb-16">
+    <input type="hidden" name="access_key" value="4076e256-ceec-475d-bc60-c13639371d3e">
+    <input type="hidden" name="subject" value="雅集报名 / Gathering sign-up">
+    <input type="hidden" name="from_name" value="苍岭清舍 Eastern Mountain Life">
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="redirect" value="https://easternmountainlife.com/gatherings/thanks.html">
     <input type="hidden" name="活动 Event" value="苍岭清舍 · 三日武学雅集 Three-Day Martial Arts Gathering (Nov 22–24, 2026)">
     <div><label class="block text-xs tracking-[0.1em] text-mist mb-2" for="f-name">姓名 Name *</label><input id="f-name" name="姓名 Name" type="text" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent"></div>
     <div><label class="block text-xs tracking-[0.1em] text-mist mb-2" for="f-email">邮箱 Email *</label><input id="f-email" name="email" type="email" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-wood bg-transparent"></div>
@@ -111,8 +111,8 @@
 f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='提交中… Sending…';
 var d={};new FormData(f).forEach(function(v,k){d[k]=v});
 var c=new AbortController(),t=setTimeout(function(){c.abort()},15000);
-fetch('https://formsubmit.co/ajax/caicarol687012@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d),signal:c.signal})
-.then(function(r){clearTimeout(t);if(!r.ok)throw 0;return r.json()}).then(function(j){if(j&&String(j.success)==='false')throw 0;location.href='thanks.html'})
+fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d),signal:c.signal})
+.then(function(r){clearTimeout(t);if(!r.ok)throw 0;return r.json()}).then(function(j){if(!j||!j.success)throw 0;location.href='thanks.html'})
 .catch(function(){clearTimeout(t);b.disabled=false;b.textContent='再试一次 Try again';st.className='text-sm leading-relaxed text-wood';
 st.innerHTML='抱歉，报名系统暂时连不上。请稍后再试，或直接加微信 <b>Eastern_mountainlife</b> 报名，也可以扫下方二维码进群。<br><span class="font-serifen italic">Sorry, the sign-up service is not responding right now. Please try again later, or sign up on WeChat: <b>Eastern_mountainlife</b>, or scan the group QR code below.</span>';});});})();
 </script>
