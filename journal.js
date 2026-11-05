@@ -1,6 +1,14 @@
 // 山居日志数据：新笔记加到数组最前面即可。pathway 取值: tea martial wild youth food farm zen
 window.JOURNAL = [
  {
+  "title": "小时候爱爬树的男孩，现在…… The Boy Who Loved Climbing Trees, Now…",
+  "url": "https://youtube.com/shorts/Z5HGp_xtLOA",
+  "date": "2026-11-04",
+  "type": "video",
+  "pathway": "youth",
+  "cover": "images/journal/yt-Z5HGp_xtLOA.jpg"
+ },
+ {
   "title": "马文国教授 · 三日武学雅集 Prof. Ma Wenguo · Three-Day Martial Arts Gathering",
   "url": "https://youtube.com/shorts/UGuFkz8oIzk",
   "date": "2026-11-04",
