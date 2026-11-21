@@ -12,6 +12,8 @@ window.GATHERINGS = [
   "summary_en": "Professor Ma Wenguo, a doctor of martial arts, joins us in the mountains: on the first morning, find your body and choose a standing practice; over the next two and a half days, vote on one traditional art and study it together.",
   "intro_cn": "武学博士马文国教授莅临山中，识身选桩，共选一艺。",
   "intro_en": "Professor Ma Wenguo, a doctor of martial arts, joins us to find each person's stance and study one traditional art together.",
+  "notice_cn": "原定 11 月 22–24 日，可能顺延至下月，具体时间另行通知。",
+  "notice_en": "Originally Nov 22–24; likely postponed to next month. New dates TBA.",
   "upcoming": true,
   "signup_open": true,
   "signup_until": "2026-11-21"

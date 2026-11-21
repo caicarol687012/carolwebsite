@@ -159,7 +159,7 @@
             <a id="gb-link" href="gatherings/" class="pulse-btn border border-wood text-wood px-6 py-2 text-sm tracking-[0.2em] hover:bg-wood hover:text-charcoal transition-colors">了解详情 Details</a>
         </div>
     </section>
-    <script src="gatherings/events.js"></script>
+    <script src="gatherings/events.js?v=1120"></script>
     <script>
     (function(){var e=(window.GATHERINGS||[]).filter(function(x){return x.upcoming;})[0];
     if(!e){return;}document.getElementById('gb-title').textContent=e.title_cn+' · '+e.when_cn+' ｜ '+e.title_en+' · '+e.when_en;
@@ -534,6 +534,7 @@
             <h3 id="sp-title" class="font-serifcn text-2xl sm:text-3xl tracking-widest text-charcoal mb-1"></h3>
             <p id="sp-title-en" class="font-serifen italic text-mist mb-4"></p>
             <p id="sp-when" class="whitespace-pre-line font-sans text-sm tracking-widest text-earth mb-2"></p>
+            <p id="sp-notice" class="font-sans text-sm tracking-wider text-wood font-semibold mb-4" hidden></p>
             <p id="sp-until" class="font-sans text-xs tracking-widest text-mist mb-4"></p>
             <p id="sp-intro" class="font-serifcn text-sm leading-relaxed text-charcoal mb-1"></p>
             <p id="sp-intro-en" class="font-serifen italic text-sm text-mist mb-6"></p>
@@ -558,6 +559,7 @@
         if(e.signup_until){var d=e.signup_until.split('-');document.getElementById('sp-until').textContent='报名截至 '+(+d[1])+'月'+(+d[2])+'日 · Sign up by '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d[1]-1]+' '+(+d[2]);}
         document.getElementById('sp-go').href='gatherings/'+e.page+'#signup';
         document.getElementById('sp-more').href='gatherings/'+e.page;document.getElementById('sp-intro').textContent=e.intro_cn||'';document.getElementById('sp-intro-en').textContent=e.intro_en||'';
+        if(e.notice_cn||e.notice_en){var n=document.getElementById('sp-notice');n.textContent=(e.notice_cn||'')+(e.notice_cn&&e.notice_en?'\n':'')+(e.notice_en||'');n.style.whiteSpace='pre-line';n.hidden=false;}
         function close(){pop.classList.remove('show');document.documentElement.style.overflow='';document.body.style.overflow='';try{sessionStorage.setItem(key,'1');}catch(err){}setTimeout(function(){pop.hidden=true;},600);}
         document.getElementById('sp-close').onclick=close;
         pop.addEventListener('click',function(ev){if(ev.target===pop){close();}});
