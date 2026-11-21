@@ -15,7 +15,6 @@ window.GATHERINGS = [
   "notice_cn": "原定 11 月 22–24 日，可能顺延至下月，具体时间另行通知。",
   "notice_en": "Originally Nov 22–24; likely postponed to next month. New dates TBA.",
   "upcoming": true,
-  "signup_open": true,
-  "signup_until": "2026-11-21"
+  "signup_open": true
  }
 ];
