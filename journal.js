@@ -1,6 +1,38 @@
 // 山居日志数据：新笔记加到数组最前面即可。pathway 取值: tea martial wild youth food farm zen
 window.JOURNAL = [
  {
+  "title": "感恩节快乐 · 苍岭清舍一家人 Happy Thanksgiving from Our Whole Family",
+  "url": "https://youtube.com/shorts/x4f4xPMjhao",
+  "date": "2026-11-26",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-x4f4xPMjhao.jpg"
+ },
+ {
+  "title": "日日是好日 Every Day Is a Good Day",
+  "url": "https://youtube.com/shorts/pmY5l2sKlr0",
+  "date": "2026-11-25",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-pmY5l2sKlr0.jpg"
+ },
+ {
+  "title": "拍卖场买回两只小山羊 Bought Goats at a Livestock Auction",
+  "url": "https://youtube.com/shorts/vr3kConYkwY",
+  "date": "2026-11-22",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-vr3kConYkwY.jpg"
+ },
+ {
+  "title": "新家庭成员 New Family Member",
+  "url": "https://youtube.com/shorts/2hMEXnFHcy8",
+  "date": "2026-11-22",
+  "type": "video",
+  "pathway": "farm",
+  "cover": "images/journal/yt-2hMEXnFHcy8.jpg"
+ },
+ {
   "title": "小时候爱爬树的男孩，现在…… The Boy Who Loved Climbing Trees, Now…",
   "url": "https://youtube.com/shorts/Z5HGp_xtLOA",
   "date": "2026-11-04",
@@ -55,6 +87,14 @@ window.JOURNAL = [
   "type": "video",
   "pathway": "farm",
   "cover": "images/journal/yt-Vno9JZ6tBGk.jpg"
+ },
+ {
+  "title": "雨后，儿子把整棵树修剪了 After the Rain, My Son Trimmed the Whole Tree",
+  "url": "https://youtube.com/shorts/qzXVu35g8yE",
+  "date": "2026-10-23",
+  "type": "video",
+  "pathway": "youth",
+  "cover": "images/journal/yt-qzXVu35g8yE.jpg"
  },
  {
   "title": "奇门十三剑 Qimen Thirteen Swords",
